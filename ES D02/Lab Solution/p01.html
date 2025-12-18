@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        #name;
+        #age;
+        constructor(_name, _age) {
+          this.Age = _age;
+          this.Name = _name;
+        }
+
+        set Age(_age) {
+          if (_age <= 0) this.#age = 1;
+          else this.#age = _age;
+        }
+        get Age() {
+          return this.#age;
+        }
+
+        set Name(_name) {
+          if (_name === "") _name = "N/A";
+          else this.#name = _name;
+        }
+        get Name() {
+          return this.#name;
+        }
+
+        toString() {
+          return `${this.#name} : ${this.#age}`;
+        }
+      }
+
+      class Student extends Person {
+        #major;
+        constructor(_name, _age, _major) {
+          super(_name, _age);
+          this.Major = _major;
+        }
+
+        set Major(_major) {
+          if (_major === "") _major = "N/A";
+          else this.#major = _major;
+        }
+        get Major() {
+          return this.#major;
+        }
+
+        study() {
+          console.log(`I'm a student, my major is ${this.#major}`);
+        }
+
+        toString() {
+          return `${this.Name}, ${this.Age}, ${this.Major}`;
+        }
+      }
+
+      class Teacher extends Person {
+        #subject;
+        constructor(_name, _age, _subject) {
+          super(_name, _age);
+          this.Subject = _subject;
+        }
+
+        set Subject(_subject) {
+          if (_subject === "") _subject = "N/A";
+          else this.#subject = _subject;
+        }
+        get Subject() {
+          return this.#subject;
+        }
+
+        teach() {
+          console.log(`I'm a teacher, i teach ${this.#subject}`);
+        }
+
+        toString() {
+          return `${this.Name}, ${this.Age}, ${this.Subject}`;
+        }
+      }
+
+      let teacher1 = new Teacher("Ali", 55, "Math");
+      let student1 = new Student("Sara", 23, "Dentist");
+
+      console.log(teacher1.toString());
+      teacher1.teach();
+
+      console.log(student1.toString());
+      student1.study();
+    </script>
+  </body>
+</html>

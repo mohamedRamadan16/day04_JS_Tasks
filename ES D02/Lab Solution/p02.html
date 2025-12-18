@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Shape {
+        constructor() {}
+        calcArea() {
+          return 0;
+        }
+      }
+
+      class Rect extends Shape {
+        #l1;
+        #l2;
+        constructor(_l1, _l2) {
+          super();
+          this.L1 = _l1;
+          this.L2 = _l2;
+        }
+        set L1(_l1) {
+          if (_l1 <= 0) age = 1;
+          else this.#l1 = _l1;
+        }
+        get L1() {
+          return this.#l1;
+        }
+        set L2(_l2) {
+          if (_l2 <= 0) l2 = 1;
+          else this.#l2 = _l2;
+        }
+        get L2() {
+          return this.#l2;
+        }
+
+        calcArea() {
+          return this.L1 * this.L2;
+        }
+      }
+
+      class Circle extends Shape {
+        #r;
+        constructor(_r) {
+          super();
+          this.R = _r;
+        }
+        set R(_r) {
+          if (_r <= 0) r = 1;
+          else this.#r = _r;
+        }
+        get L1() {
+          return this.#r;
+        }
+        calcArea() {
+          return (3.14 * this.#r).toFixed(2);
+        }
+      }
+
+      let shapes = [
+        new Rect(10, 20),
+        new Circle(5),
+        new Circle(2),
+        new Rect(5, 9),
+      ];
+      shapes.forEach((shape) => {
+        console.log(shape.calcArea());
+      });
+    </script>
+  </body>
+</html>
