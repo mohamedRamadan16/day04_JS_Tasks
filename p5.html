@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .print {
+        width: 50px;
+      }
+      .even {
+        background-color: brown;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        border-radius: 5px;
+        color: black;
+      }
+      .odd {
+        background-color: rgb(102, 212, 95);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        border-radius: 5px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="print"></p>
+    <script>
+      var arr = [10, 15, 26, 23, 29, 18, 20, -70, 15, 13, 17, 18, 22];
+      var i = 0;
+
+      var interval = setInterval(() => {
+        if (i < arr.length) {
+          var pr = document.querySelector(".print");
+          pr.innerText = arr[i];
+          if (i % 2 == 0) {
+            pr.classList.remove("odd");
+            pr.classList.add("even");
+          } else {
+            pr.classList.remove("even");
+            pr.classList.add("odd");
+          }
+          i++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

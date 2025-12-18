@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do App</title>
+    <style>
+      body {
+        background-color: aliceblue;
+        font-family: tahoma;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        margin: 10px auto;
+        width: 600px;
+        background-color: rgb(209, 222, 233);
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+      }
+
+      .title {
+        text-align: center;
+        margin-top: 20px;
+        color: rgb(74, 106, 133);
+      }
+
+      .add-section {
+        width: 450px;
+        text-align: center;
+        margin: auto;
+        margin-top: 20px;
+      }
+
+      .input {
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px;
+        width: 300px;
+        margin-right: 20px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .input:focus {
+        outline: 1px solid rgb(95, 126, 152);
+      }
+
+      .add-button,
+      .complete-btn {
+        padding: 10px 15px;
+        font-size: 12px;
+        font-weight: bold;
+        background-color: rgb(95, 126, 152);
+        border: none;
+        color: white;
+        border-radius: 5px;
+      }
+
+      .add-button:hover,
+      .complete-btn:hover {
+        background-color: rgb(101, 131, 157);
+        cursor: pointer;
+      }
+
+      .tasks {
+        width: 400px;
+        margin: 10px auto;
+        margin-top: 30px;
+      }
+
+      .tasks-tbl {
+        width: 100%;
+      }
+
+      .task-content {
+        font-weight: bold;
+        font-size: 12px;
+        width: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="title">ToDo App</h2>
+      <div class="add-section">
+        <input type="text" placeholder="Enter a task" class="input" />
+        <button class="add-button">Add Task</button>
+      </div>
+
+      <div class="tasks">
+        <table class="tasks-tbl"></table>
+      </div>
+    </div>
+
+    <script>
+      var addBtn = document.querySelector(".add-button");
+      var inputField = document.querySelector(".input");
+      var tasksContainer = document.querySelector(".tasks-tbl");
+
+      addBtn.addEventListener("click", function () {
+        var inputValue = inputField.value;
+        if (inputValue === "") return;
+
+        var taskContainer = document.createElement("tr");
+        taskContainer.classList.add("task-row");
+
+        taskContainer.innerHTML = `
+          <td class="task-content">${inputValue}</td>
+          <td><button class="complete-btn">done</button></td>
+        `;
+
+        taskContainer
+          .querySelector(".complete-btn")
+          .addEventListener("click", function () {
+            taskContainer.remove();
+          });
+
+        tasksContainer.appendChild(taskContainer);
+        inputField.value = "";
+      });
+    </script>
+  </body>
+</html>

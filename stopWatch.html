@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop Watch</title>
+    <style>
+      body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        height: 100vh;
+        position: relative;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        margin: 10px auto;
+        background-color: rgb(78, 148, 192);
+        border: 1px solid rgb(60, 131, 223);
+        border-radius: 15px;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.15);
+      }
+
+      .timer,
+      .buttons {
+        text-align: center;
+        margin: 30px auto 30px auto;
+      }
+
+      .time {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 80px;
+        font-weight: bold;
+        color: white;
+        padding: 20px;
+      }
+
+      .start-btn,
+      .stop-btn,
+      .reset-btn {
+        padding: 20px 30px;
+        margin-left: 30px;
+        font-size: 20px;
+        background-color: rgb(35, 94, 171);
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+      }
+
+      .start-btn:hover,
+      .stop-btn:hover,
+      .reset-btn:hover {
+        background-color: rgb(25, 70, 129);
+      }
+
+      .start-btn {
+        margin-left: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="timer">
+        <div class="hours time">00</div>
+        <div class="minutes time">00</div>
+        <div class="seconds time">00</div>
+      </div>
+      <div class="buttons">
+        <button class="start-btn">START</button>
+        <button class="stop-btn">STOP</button>
+        <button class="reset-btn">RESET</button>
+      </div>
+    </div>
+
+    <script>
+      let hours = document.querySelector(".hours");
+      let minutes = document.querySelector(".minutes");
+      let seconds = document.querySelector(".seconds");
+      let startBtn = document.querySelector(".start-btn");
+      let stopBtn = document.querySelector(".stop-btn");
+      let resetBtn = document.querySelector(".reset-btn");
+
+      let timeSec = 0,
+        timeMin = 0,
+        timeHour = 0;
+      let interval;
+      startBtn.addEventListener("click", () => {
+        interval = setInterval(() => {
+          if (timeSec === 60) {
+            timeSec = 0;
+            timeMin++;
+          }
+          if (timeMin === 60) {
+            timeMin = 0;
+            timeHour++;
+          }
+          seconds.innerHTML = timeSec;
+          minutes.innerHTML = timeMin;
+          hours.innerHTML = timeHour;
+          timeSec++;
+        }, 1000);
+      });
+
+      stopBtn.addEventListener("click", () => {
+        clearInterval(interval);
+      });
+
+      resetBtn.addEventListener("click", () => {
+        clearInterval(interval);
+        timeSec = 0;
+        timeMin = 0;
+        timeHour = 0;
+        seconds.innerHTML = "00";
+        minutes.innerHTML = "00";
+        hours.innerHTML = "00";
+      });
+    </script>
+  </body>
+</html>

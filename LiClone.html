@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="newLis">
+      <li class="liElement">element 1</li>
+      <li class="liElement">element 2</li>
+      <li class="liElement">element 3</li>
+    </ul>
+
+    <script>
+      let newElements = document.querySelector(".newLis");
+      let elements = document.querySelectorAll(".liElement");
+      elements.forEach((element) => {
+        element.addEventListener("click", () => {
+          let newLI = document.createElement("li");
+          newLI.innerText = element.innerText;
+          newLI.classList.add("liElement");
+          newElements.appendChild(newLI);
+        });
+      });
+    </script>
+  </body>
+</html>

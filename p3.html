@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SlideShow</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 10px 0px 0px 15px;
+      }
+      .img {
+        border: none;
+        border-radius: 5px;
+        width: 300px;
+      }
+
+      .btn {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(194, 192, 192);
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: rgb(222, 222, 222);
+      }
+    </style>
+  </head>
+  <body>
+    <div style="margin-bottom: 20px">
+      <button class="prev btn">previous</button>
+      <button class="next btn">next</button>
+      <button class="slide-show btn">slide show</button>
+      <button class="stop-slide btn">stop</button>
+    </div>
+
+    <img class="img" src="Facebook Suggestion/images/1.jpg" />
+
+    <script>
+      var nextBTN = document.querySelector(".next");
+      var prevBTN = document.querySelector(".prev");
+      var slideBTN = document.querySelector(".slide-show");
+      var stopBTN = document.querySelector(".stop-slide");
+
+      var img = document.querySelector(".img");
+      var cnt = 1;
+
+      var interval;
+
+      nextBTN.addEventListener("click", function () {
+        cnt++;
+        if (cnt == 14) cnt = 1;
+        img.src = `./Facebook Suggestion/images/${cnt}.jpg`;
+      });
+      prevBTN.addEventListener("click", function () {
+        cnt--;
+        if (cnt == 0) cnt = 13;
+        img.src = `./Facebook Suggestion/images/${cnt}.jpg`;
+      });
+      slideBTN.addEventListener('click', function(){
+        interval = setInterval(function(){
+          nextBTN.click();
+        },1000);
+      });
+
+      stopBTN.addEventListener('click', function(){
+        clearInterval(interval);
+      });
+
+    </script>
+  </body>
+</html>

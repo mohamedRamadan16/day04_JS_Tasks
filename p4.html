@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P4</title>
+
+    <style>
+      .print-space {
+        margin-top: 100px;
+        height: 50px;
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="list">
+      <select class="students-list" name="students-list">
+        <option value="10">10</option>
+        <option selected value="20">20</option>
+        <option value="30">30</option>
+        <option value="55">55</option>
+        <option value="59">59</option>
+      </select>
+    </div>
+
+    <div class="print-space"></div>
+
+    <script>
+      function Student(_id, _name, _age) {
+        this.id = _id;
+        this.name = _name;
+        this.age = _age;
+
+        this.to_string = function () {
+          return `ID: ${this.id}, Name: ${this.name}, Age: ${this.age}`;
+        };
+      }
+
+      var students = [
+        new Student(10, "Mohammed", 23),
+        new Student(20, "Ali", 25),
+        new Student(30, "Ebrahim", 30),
+        new Student(55, "Saad", 22),
+        new Student(59, "Sara", 24),
+      ];
+
+      var list = document.querySelector(".students-list");
+      list.addEventListener("change", function () {
+        for (var i = 0; i < list.options.length; i++) {
+          if (list.options[i].selected) {
+            var val = Number(list.options[i].value);
+            for (var i = 0; i < students.length; i++) {
+              if (val === students[i].id) {
+                document.querySelector(".print-space").innerHTML =
+                  students[i].to_string();
+                break;
+              }
+            }
+            break;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

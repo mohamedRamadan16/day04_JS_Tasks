@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P1</title>
+    <style>
+      .img {
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <img class="img" src="./Facebook Suggestion/images/1.jpg" /><br />
+    <img class="img" src="./Facebook Suggestion/images/2.jpg" /><br />
+    <img class="img" src="./Facebook Suggestion/images/3.jpg" /><br />
+
+    <div class="p2 fontBlue">
+      <select class="cities">
+        <option value="Cairo" name="cityOption">cairo</option>
+        <option value="Alexandria" name="cityOption">alex</option>
+        <option value="Mansoura" name="cityOption">mans</option>
+        <option value="Zagazig" name="cityOption">zag</option>
+      </select>
+    </div>
+
+    <div class="p3">
+      <table class="tbl1">
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+      </table>
+
+      <table class="tbl2">
+        <tr class="fontBlue">
+          <td>tbl data</td>
+        </tr>
+        <tr>
+          <td>tbl data</td>
+        </tr>
+        <tr>
+          <td>tbl data</td>
+        </tr>
+      </table>
+    </div>
+
+    <p class="fontBlue"></p>
+
+    <script>
+      var imgList1 = document.getElementsByClassName("img");
+      var imgList2 = document.querySelectorAll(".img");
+      console.log(imgList1);
+      console.log(imgList2);
+
+      //p2
+      var allOptions = document.getElementsByName("cityOption");
+      console.log(allOptions);
+
+      //p3
+      var allRowsForSecondTable = document
+        .getElementsByTagName("table")[1]
+        .getElementsByTagName("tr");
+      console.log(allRowsForSecondTable);
+
+      //p4
+      var fontBlueClassElements = document.querySelectorAll(".fontBlue");
+      console.log(fontBlueClassElements);
+
+    </script>
+  </body>
+</html>
